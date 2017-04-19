@@ -34,7 +34,7 @@ export class IvanhoinackiApp implements OnInit {
             backDelay: 300,
             typeSpeed: 30
         });
-        console.log("@ivanhoinacki initialized...");
+        console.log("@jguardado39 initialized...");
     }
 
 }
