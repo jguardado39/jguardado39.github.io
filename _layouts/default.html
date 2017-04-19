@@ -4,12 +4,16 @@
 <html lang="en">
   <head>
     {% include header.html %}
+    {% include analytics.html %}
+    {% seo %}
+
   </head>
   <body>
     <div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
     <div id = "wrapper">
       {%include navigation.html %}
       <div class="container">
+        <a name="top"></a>
         {{ content }}
       </div>
       {% include footer.html %}

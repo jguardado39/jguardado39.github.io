@@ -1,0 +1,19 @@
+
+<div>
+  <br>
+  <h3>Table of Contents</h3>
+
+  <ul>
+
+
+      {% for post in site.posts%}
+        {% if post.categories == page.categories %}
+          <li>
+            <a href="{{ site.baseurl | within: site}}{{post.url | within: site}}">
+              {{ post.title | within: site }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+  </ul>
+</div>

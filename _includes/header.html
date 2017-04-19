@@ -1,11 +1,81 @@
 <meta charset="utf-8">
-<title>{{ page.title }}</title>
+{% feed_meta %}
+<!--<title>{{ page.title }}</title>-->
+<!--FAVICON-->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/icons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/icons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/icons/manifest.json">
+<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#d90006">
+<link rel="shortcut icon" href="/icons/favicon.ico">
+<meta name="msapplication-config" content="/icons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Twitter Meta -->
+<meta name="twitter:card" content="Aevyz's Project Hub & Blog">
+<meta name="twitter:site" content="@Aevyz_">
+<meta name="twitter:creator" content="@Aevyz_">
+{% if page.title %}
+  <meta name="twitter:title" content="{{ page.title }}">
+{% else %}
+  <meta name="twitter:title" content="{{ site.title }}">
+{% endif %}
+{% if page.url %}
+  <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+{% endif %}
+  <meta name="twitter:description" content="{{ page.excerpt  | strip_html }}">
+{% if page.image %}
+  <meta name="twitter:image:src" content="{{ site.url }}/images/{{ page.image }}">
+{% else %}
+  <meta name="twitter:image:src" content="{{ site.url }}/images/logo/favicon2.png">
+{% endif %}
+
+<!-- Open Graph -->
+
+<meta content="{{ site.title }}" property="og:site_name">
+{% if page.title %}
+  <meta content="{{ page.title }}" property="og:title">
+{% else %}
+  <meta content="{{ site.title }}" property="og:title">
+{% endif %}
+{% if page.categories %}
+  <meta content="article" property="og:type">
+{% else %}
+  <meta content="website" property="og:type">
+{% endif %}
+<meta name="twitter:description" content="{{ page.excerpt  | strip_html }}">
+{% if page.url %}
+  <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+{% endif %}
+{% if page.date %}
+  <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
+
+{% endif %}
+<meta content="{{ site.url }}/about.html" property="article:author">
+{% if page.image %}
+  <meta content="/images/{{ page.image }}" property="og:image">
+{% else %}
+  <meta content="{{ site.url }}/images/logo/favicon2.png" property="og:image">
+{% endif %}
+{% if page.categories %}
+  {% for category in page.categories limit:1 %}
+  <meta content="{{ category }}" property="article:section">
+  {% endfor %}
+{% endif %}
+{% if page.tags %}
+  {% for tag in page.tags %}
+  <meta content="{{ tag }}" property="article:tag">
+  {% endfor %}
+{% endif %}
+
+<meta name="yandex-verification" content="6abf73c2d233ad45" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ site.description }}">
-<link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
-<link href="{{ site.baseurl }}/css/hc.css" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<!--<meta name="description" content="{{ site.description }}">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/hc.css" rel="stylesheet">
+<link href="/css/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<![endif] d-->
 <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif] d-->

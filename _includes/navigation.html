@@ -7,34 +7,92 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <p class="navbar-brand">{{ site.name }}</p>
+      <p class="navbar-brand">{{ site.caption }}</p>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-      <li><a href="{{ site.baseurl }}/list.html">List</a></li>
-      <li><a href="{{ site.baseurl }}/links.html">Links</a></li>
-      <li><a href="{{ site.baseurl }}/projects.html">Projects</a></li>
-      <li><a href="{{ site.baseurl }}/about.html">About</a></li>
+        <li><a href="/">Home</a></li>
+        <li>
+          <a id="mnoscript" href="/archives.html" data-toggle="collapse">Blog Series</a>
+          <script>document.getElementById("mnoscript").href="#postCategoriesMobile";</script>
+
+          <div id="postCategoriesMobile" class="collapse" style="indent">
+            <ul id="replace0" style="padding-left: 55px">
+              <li>JavaScript Failed</li>
+          </ul>
+          </div>
+        </li>
+
+        <!--- <li><a href="/posts.html">Blog Series</a></li>
+        <li><a href="/links.html">Links</a></li> --->
+      <li><a href="/projects.html">Projects</a></li>
+      <li><a href="/about.html">About</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>
 
+
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
-    <li class="sidebar-brand"><a href="{{ site.baseurl }}/"><h1 class="brand">{{ site.name }}</h1></a><h3>{{ site.description }}</h3></li>
-    <hr />
-    <li><a href="{{ site.baseurl }}/list.html">List</a></li>
-    <li><a href="{{ site.baseurl }}/links.html">Links</a></li>
-    <li><a href="{{ site.baseurl }}/projects.html">Projects</a></li>
-    <li><a href="{{ site.baseurl }}/about.html">About</a></li>
+    <li class="sidebar-brand"><a href="/"><h2 class="brand" style="padding-top: 0">{{ site.caption }}</h2></a><h3>{{ site.description }}</h3></li>
+
+  <noscript>  
+<!--TODO WRITE YOUR OWN NOSCRIPT SITE-->
+      <br>
+      <hr />
+      <br>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.enable-javascript.com/"><li><h5><b>Please Enable Javascript</b></h5></li>
+          <li>Many site features require it.</li></a>
+      <br>
+
+
+      </noscript>
+      <hr />
+    <li>
+      <a id="dnoscript" href="/archives.html" data-toggle="collapse">Blog Series</a>
+      <script>document.getElementById("dnoscript").href="#postCategories";</script>
+
+      <div id="postCategories" class="collapse">
+      <ul id="replace1" style="padding-left: 55px">
+        <li>JavaScript Failed</li>
+      </ul>
+      </div>
+    </li>
+    <!---
+    <li><a href="/posts.html">Blog Series</a></li>
+    <li><a href="/links.html">Links</a></li>--->
+    <li><a href="/projects.html">Projects</a></li>
+    <li><a href="/about.html">About</a></li>
     <hr />
     <div id="social-wrapper">
-      <li> <a href="{{ site.twitter }}"><i class="fa fa-twitter-square"></i> @twitter</a></li>
-      <li> <a href="{{ site.linkedin }}"><i class="fa fa-linkedin-square"></i> linkedin</a> </li>
-      <li> <a href="{{ site.facebook }}"><i class="fa fa-facebook-square"></i> facebook</a></li>
-      <li> <a href="{{ site.github }}"><i class="fa fa-github-square"></i> github</a> </li>
+      <li> <a href="{{ site.twitter }}"><i class="fa fa-twitter-square"></i> @Aevyz_</a></li>
+      <!---<li> <a href="{{ site.linkedin }}"><i class="fa fa-linkedin-square"></i> linkedin</a> </li>
+      <li> <a href="{{ site.facebook }}"><i class="fa fa-facebook-square"></i> facebook</a></li>--->
+      <li> <a href="{{ site.github }}"><i class="fa fa-github-square"></i> Aevyz</a> </li>
+      <li> <a href="/feed.xml"><i class="fa fa-rss"></i> AtomFeed</li>
     </div>
   </ul>
+
 </div>
+
+<script>
+console.time("nav");
+var comArray = [];
+var catArray = [];
+var list = "";
+{% for pg in site.posts %}
+comArray.push('{{pg.categories}}">{{pg.series}}');{% endfor %}
+for(i = 0; i<comArray.length;i++){
+  if(catArray.indexOf(comArray[i])==-1) {
+    catArray.push(comArray[i]);
+    list='<li style="font-size: 13px; text-indent: 0;line-height: 15px; padding-bottom: 1px; padding-top: 2px;"><a href="{{site.baseurl}}/posts.html#'+comArray[i]+'</a></li>'+list;
+  }
+}
+
+document.getElementById('replace0').innerHTML = list;
+document.getElementById('replace1').innerHTML = list;
+
+console.timeEnd("nav");
+</script>

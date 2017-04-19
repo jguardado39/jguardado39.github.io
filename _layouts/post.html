@@ -3,6 +3,18 @@ layout: default
 ---
 <div id="article">
   <div class="article-title">{{ page.title }}</div>
+  {% assign str = "" %}
+  {% for post in site.posts %}
+    {% if post.categories == page.categories %}
+      {% capture final %}
+      {{ site.baseurl | within: site}}{{post.url | within: site}}
+      {% endcapture %}
+      {% assign str = final %}
+    {% endif %}
+  {% endfor %}
+
+  <h6 style="padding-left:15px;">&#8627;Part of:    <a href="{{str}}">{{page.series}}</a></h6>
+
   <p class="meta">
     <small>
       &nbsp;<i class="fa fa-calendar-o"></i> {{ page.date | date_to_string}}
@@ -10,8 +22,17 @@ layout: default
   </p> <hr/>
   <div class="post">
     {{ content }}
+    {% if page.categories != blog %}
+    <hr>
+    <i style="font-size: smaller">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0; padding-right: 5px" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>The content of this site's posts are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License. <a href="/license.html">Read More</a>
+    </i>
+    {% endif %}
   </div>
 </div>
 {% include share.html %}
-{% include pager.html %}
+{% include seriespager.html %}
+<!---
+<!------>
+
 {% include comment.html %}

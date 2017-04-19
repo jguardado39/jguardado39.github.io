@@ -1,22 +1,40 @@
-name: Herring Cove
-author: Herring Cove
-baseurl: /herring-cove
-description: theme for jekyll
-github: http://www.github.com/arnp
-twitter: http://www.twitter.com/
-facebook: http://www.facebook.com
-linkedin: http://www.linkedin.com
-email: rnpatel[at]me.com
-location: 42°2'16"N   70°12'47"W
-disqus: diqus-username
+name: Aevyz's Project Hub and Blog
+caption: Jay "Aevyz" L.
+author: Aevyz
+baseurl: ""
+description: Aevyz's Project Hub and Blog
+github: http://www.github.com/Aevyz
+twitter: https://twitter.com/Aevyz_
+##facebook: http://www.facebook.com
+##linkedin: http://www.linkedin.com
+email: j.aevyz [at] gmail [dot] com
+location: Munich
+disqus: aevyz
+##SEO
+social:
+  name: Aevyz
+  links:
+    - https://twitter.com/Aevyz_
+    - https://github.com/aevyz
+webmaster_verifications:
+  google: oa8y9MR5B22kp07Kg_h0C5ZHqkosnQ6zeNf8x7CGP_w
+  bing: CDC9B5FE4D8275A97E431F68295D6016
+
+url: https://aevyz.github.io
+
+
+gems:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
 
 ##Make sure to edit the above fields, especially for disqus.
+permalink: /:categories/:title.html
 
-
-highlighter: pygments
-markdown: redcarpet
-redcarpet:
-  extensions: ["tables"]
+##highlighter: rouge ##pygments --> No Longer In Use
+markdown: kramdown ##redcarpet -->No Longer in Use
+##redcarpet: --> Not required
+##  extensions: ["tables"]
 
 defaults:
   - scope:

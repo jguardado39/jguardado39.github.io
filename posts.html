@@ -1,0 +1,79 @@
+---
+title: My Posts
+---
+<div class="container">
+  <div id="article">
+    <h1>My Series</h1>
+      <p>
+        Here you can find a collection of all my posts ordered by series. If you want to view these chronologically, you can visit the <a href="/archives.html">old archives</a>.
+      </p>
+      <br>
+      <div id="list">
+        <br>
+        <br>
+        Hey, it appears that your browser does not support Javascript, meaning I can't use all my scripts. It would be nice if you could <a href="http://www.enable-javascript.com/">enable</a> it. I understand that some may not wish to do so, but if so not all site functions may work as intended. <a href="/archives.html">Here</a> is the legacy archive, which should suit your needs.
+      </div>
+  </div>
+
+<script type="text/javascript">
+var pTitles = [];
+var pURLs = [];
+var pCat = [];
+var pSeries = [];
+
+{% for post in site.posts %}pTitles[pTitles.length] = "{{post.title}}";
+pURLs[pURLs.length] = "{{post.url}}";
+pCat[pCat.length] = "{{post.categories}}";
+pSeries[pSeries.length] = "{{post.series}}"; {% endfor %}
+
+
+pTitles.reverse();
+pURLs.reverse();
+pCat.reverse();
+pSeries.reverse();
+
+var final ="";
+var doneCat= [];
+
+for(i = 0; i < pTitles.length; i++){
+  var bfor = false;
+  for(j = 0; j < doneCat.length; j++){
+    if(doneCat[j] == pCat[i]){
+      bfor = true;
+      break;
+    }
+  }
+
+  if(bfor == true){
+     continue;
+  }
+  else{
+    doneCat.push(pCat[i]);
+    var tempstr ="";
+    final += '<a id="'+pCat[i]+'"><h3>'+pSeries[i]+"</h3></a>";
+
+    for(j = 0; j<pCat.length;j++){
+
+
+      if(pCat[i]==pCat[j]){
+        var str = String(pTitles[j]);
+        var url = String(pURLs[j]);
+        tempstr += '<li>'+str.link(url)+'</li>';
+      }
+
+    }
+    if(tempstr != ""){
+      final+='<ul class="seriesposts">';
+      final+=tempstr;
+      final+='</ul><br>';
+    }
+    else{
+      final+="<p>There doesn't appear to be anything in this category. This is a mistake.</p><br>"
+    }
+  }
+}
+console.log(final);
+document.getElementById('list').innerHTML = final;
+
+</script>
+</div>

@@ -1,0 +1,29 @@
+---
+title: Archives
+---
+<div class="container">
+  <div id="article">
+  <h1>Archive</h1>
+      <h6> ↳ Sorted from Newest to Oldest</h6>
+      <br>
+
+      <h5 id="deprecated">Hi, it appears you are refered to the old Archive Page due to you not having Javascript enabled. Please enable it and use the more feature rich <a href="posts.html">posts page</a>. </h5>
+      <br>
+      <script>
+          document.getElementById("deprecated").innerHTML='Deprecated: Please use the <a href="posts.html">posts page</a>';
+      </script>
+  <ul class="posts">
+
+      {% for post in site.posts %}
+          <li>
+              <a href="{{ site.baseurl | within: site}}{{post.url | within: site}}">
+                {{ post.title | within: site }}
+              </a>
+              <time class="pull-right post-list">
+                {{ post.date | within: site | date_to_string | date: "%b %-d, %Y"  }}
+              </time>
+
+          </li>
+      {% endfor %}
+  </ul>
+</div>
