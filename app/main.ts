@@ -6,7 +6,7 @@ import {ResumeCmp} from './components/resume/resume.comp';
 
 
 @Component({
-    selector: 'ivanhoinacki',
+    selector: 'jguardado39',
     providers: [],
     templateUrl: 'app/main.html',
     styleUrls: ['app/main.css'],
