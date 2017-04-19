@@ -42,11 +42,11 @@ System.register(['@angular/core', '@angular/router', './components/home/home.com
                         backDelay: 300,
                         typeSpeed: 30
                     });
-                    console.log("@ivanhoinacki initialized...");
+                    console.log("@jguardado39 initialized...");
                 };
                 IvanhoinackiApp = __decorate([
                     core_1.Component({
-                        selector: 'ivanhoinacki',
+                        selector: 'jguardado39',
                         providers: [],
                         templateUrl: 'app/main.html',
                         styleUrls: ['app/main.css'],
