@@ -1,17 +1,17 @@
 name: John's Project Hub and Blog
 caption: John Guardado
-author: Aevyz
+author: jguardado39
 baseurl: ""
 description: John's Project Hub and Blog
-github: http://www.github.com/Aevyz
+github: http://www.github.com/jguardado39
 twitter: https://twitter.com/jguardado39
 ##facebook: http://www.facebook.com
 ##linkedin: http://www.linkedin.com
-email: j.aevyz [at] gmail [dot] com
-location: Munich
-disqus: aevyz
+email: jguardado39@gmail.com
+location: Berkeley
+disqus: jguardado39
 ##SEO
-social:
+social: 
   name: Aevyz
   links:
     - https://twitter.com/Aevyz_
