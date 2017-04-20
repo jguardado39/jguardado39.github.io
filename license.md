@@ -41,8 +41,8 @@ The rest of the site's code, defined as all content not within `_posts` and `_si
 
 
 ## Source
-You can find this websites original source + content at its [GitHub Repository](https://github.com/Aevyz/aevyz.github.io)
+You can find this websites original source + content at its [GitHub Repository](https://github.com/jguardado39/jguardado39.github.io)
 
 
  <a name="bugs" />
-<i>If you find any bugs in the site, I would appreciate it if you could [email me](/about.html#email) or [submit an issue](https://github.com/Aevyz/aevyz.github.io/issues/new) on GitHub, so that I can fix the issue. Alternatively simply comment on the relevant page if the feature is activated.</i>
+<i>If you find any bugs in the site, I would appreciate it if you could [email me](/about.html#email) or [submit an issue](https://github.com/jguardado39/jguardado39.github.io/issues/new) on GitHub, so that I can fix the issue. Alternatively simply comment on the relevant page if the feature is activated.</i>
