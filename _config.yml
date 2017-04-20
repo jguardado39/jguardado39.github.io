@@ -1,26 +1,26 @@
-name: j
+name:
 caption: John Guardado
-author: jguardado39
+author:
 baseurl: ""
 description: John's Project Hub
-github: http://www.github.com/jguardado39
-twitter: https://twitter.com/jguardado39
+github: 
+twitter: 
 ##facebook: http://www.facebook.com
 ##linkedin: http://www.linkedin.com
 email: jguardado39@gmail.com
 location: Berkeley
-disqus: jguardado39
+disqus: 
 ##SEO
 social: 
   name:
   links:
     -
-    - http://www.github.com/jguardado39
+    - 
 webmaster_verifications:
   google: oa8y9MR5B22kp07Kg_h0C5ZHqkosnQ6zeNf8x7CGP_w
   bing: CDC9B5FE4D8275A97E431F68295D6016
 
-url: https://jguardado39.github.io/
+url:
 
 
 gems:
