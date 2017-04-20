@@ -1,12 +1,12 @@
 ---
-title: Aevyz's Project Hub
+title: John's Project Hub
 ---
 {% include showcase.html %}
 {% include greeting.html %}
 
 {% if site.posts != empty %}
 <div class="recent-posts">
-  <h2>Recent Posts</h2>
+  <h2>Recent</h2>
   {% for post in site.posts limit: 3 %}
     {% if forloop.first %}
       {% assign add_class = 'most-recent' %}
