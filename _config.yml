@@ -29,7 +29,7 @@ gems:
   - jekyll-feed
 
 ##Make sure to edit the above fields, especially for disqus.
-permalink: /:categories/:title.html
+# permalink: /:categories/:title.html
 
 ##highlighter: rouge ##pygments --> No Longer In Use
 markdown: kramdown ##redcarpet -->No Longer in Use
