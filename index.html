@@ -1,4 +1,4 @@
----
+<!-- ---
 title: John's Project Hub
 ---
 {% include showcase.html %}
@@ -6,15 +6,15 @@ title: John's Project Hub
 
 {% if site.posts != empty %}
 <div class="recent-posts">
-  <!-- <h2>Recent</h2> -->
-  <!-- {% for post in site.posts limit: 3 %}
-   -->  <!-- {% if forloop.first %}
+  <h2>Recent</h2>
+  {% for post in site.posts limit: 3 %}
+    {% if forloop.first %}
       {% assign add_class = 'most-recent' %}
-      {% capture fresh_tag %} -->
-        <!-- &nbsp;<span class="badge"><smaller>Latest Posts</smaller></span> -->
-  <!--     {% endcapture %}
-    {% endif %} -->
-    <!-- <ul class="homepage-posts {{ add_class }}">
+      {% capture fresh_tag %}
+        &nbsp;<span class="badge"><smaller>Latest Posts</smaller></span>
+      {% endcapture %}
+    {% endif %}
+    <ul class="homepage-posts {{ add_class }}">
       <li>
         <span>
           <h4>
@@ -23,7 +23,7 @@ title: John's Project Hub
             </a>
             {{ fresh_tag }}
             <time class="pull-right">
-              {{ post.date | date_to_string | date: "%b %-d, %Y"  }} -->
+              {{ post.date | date_to_string | date: "%b %-d, %Y"  }}
             </time>
           </h4>
         </span>
@@ -37,3 +37,4 @@ title: John's Project Hub
   </ul>
 </div>
 {% endif %}
+ -->
