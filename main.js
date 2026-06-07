@@ -1,5 +1,6 @@
 /* ─────────────────────────────────────────
    main.js — John Guardado Portfolio
+   Graduate Researcher · Biochemistry & Molecular Biophysics
 ───────────────────────────────────────── */
 
 // Highlight the active nav link based on scroll position
@@ -32,7 +33,7 @@
 
 // Fade-in sections as they enter the viewport
 (function () {
-  const targets = document.querySelectorAll('#projects, #about, #contact');
+  const targets = document.querySelectorAll('#research, #about, #contact');
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -43,7 +44,7 @@
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.08 }
   );
 
   targets.forEach((el) => observer.observe(el));

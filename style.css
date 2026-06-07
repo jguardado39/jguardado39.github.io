@@ -1,5 +1,6 @@
 /* ─────────────────────────────────────────
    style.css — John Guardado Portfolio
+   Graduate Researcher · Biochemistry & Molecular Biophysics
 ───────────────────────────────────────── */
 
 /* ── Reset & Variables ── */
@@ -10,12 +11,12 @@
 }
 
 :root {
-  --cream:        #F9F7F2;
-  --ink:          #1A1916;
-  --muted:        #7A7771;
-  --accent:       #2E5D4B;
-  --accent-light: #E8F0EC;
-  --border:       rgba(26, 25, 22, 0.1);
+  --cream:        #F7F6F2;
+  --ink:          #18181A;
+  --muted:        #74737A;
+  --accent:       #3D4F8C;   /* deep indigo — scientific, composed */
+  --accent-light: #EDF0F8;
+  --border:       rgba(24, 24, 26, 0.1);
   --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
   --max-width:    860px;
@@ -26,12 +27,12 @@ html {
 }
 
 body {
-  background:   var(--cream);
-  color:        var(--ink);
-  font-family:  var(--font-body);
-  font-weight:  300;
-  line-height:  1.7;
-  font-size:    15px;
+  background:  var(--cream);
+  color:       var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  font-size:   15px;
 }
 
 /* ── Navigation ── */
@@ -73,7 +74,8 @@ nav {
   transition:      color 0.2s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--ink);
 }
 
@@ -129,7 +131,7 @@ h1 em {
 .hero-sub {
   font-size:     17px;
   color:         var(--muted);
-  max-width:     480px;
+  max-width:     520px;
   line-height:   1.6;
   margin-bottom: 2.5rem;
 }
@@ -154,7 +156,7 @@ h1 em {
   background: var(--accent);
 }
 
-/* ── Projects ── */
+/* ── Research / Project Cards ── */
 .projects-grid {
   display:               grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -164,10 +166,10 @@ h1 em {
 }
 
 .project-card {
-  background:  var(--cream);
-  padding:     2rem;
-  position:    relative;
-  transition:  background 0.2s;
+  background: var(--cream);
+  padding:    2rem;
+  position:   relative;
+  transition: background 0.2s;
 }
 
 .project-card:hover {
@@ -184,7 +186,7 @@ h1 em {
 .project-card h3 {
   font-family:    var(--font-display);
   font-weight:    300;
-  font-size:      1.4rem;
+  font-size:      1.35rem;
   letter-spacing: -0.02em;
   margin-bottom:  0.5rem;
   line-height:    1.2;
@@ -221,7 +223,7 @@ h1 em {
 .tag {
   font-size:      11px;
   font-weight:    500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding:        3px 9px;
   background:     transparent;
@@ -249,8 +251,8 @@ h1 em {
 }
 
 .skills-list {
-  margin-top:  2rem;
-  border-top:  1px solid var(--border);
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
 }
 
 .skill-row {
@@ -260,15 +262,18 @@ h1 em {
   padding:         0.75rem 0;
   border-bottom:   1px solid var(--border);
   font-size:       13px;
+  gap:             1rem;
 }
 
 .skill-row span:first-child {
-  font-weight: 500;
-  color:       var(--ink);
+  font-weight:  500;
+  color:        var(--ink);
+  white-space:  nowrap;
 }
 
 .skill-row span:last-child {
-  color: var(--muted);
+  color:      var(--muted);
+  text-align: right;
 }
 
 .about-right p {
@@ -336,7 +341,7 @@ footer {
   color:           var(--muted);
 }
 
-/* ── Hero Animations ── */
+/* ── Hero Fade-in ── */
 @keyframes fadeUp {
   from {
     opacity:   0;
@@ -357,6 +362,22 @@ footer {
 .hero > *:nth-child(2) { animation-delay: 0.15s; }
 .hero > *:nth-child(3) { animation-delay: 0.25s; }
 .hero > *:nth-child(4) { animation-delay: 0.35s; }
+
+/* ── Section Fade-in (JS-driven) ── */
+#research,
+#about,
+#contact {
+  opacity:    0;
+  transform:  translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#research.visible,
+#about.visible,
+#contact.visible {
+  opacity:   1;
+  transform: translateY(0);
+}
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
