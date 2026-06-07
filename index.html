@@ -1,39 +1,476 @@
----
-title: John's Project Hub
----
-{% include showcase.html %}
-{% include greeting.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="John Guardado — Software Engineer portfolio" />
+  <title>John Guardado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<!-- {% if site.posts != empty %}
-<div class="recent-posts">
-  <h2>Recent</h2>
-  {% for post in site.posts limit: 3 %}
-    {% if forloop.first %}
-      {% assign add_class = 'most-recent' %}
-      {% capture fresh_tag %}
-        &nbsp;<span class="badge"><smaller>Latest Posts</smaller></span>
-      {% endcapture %}
-    {% endif %}
-    <ul class="homepage-posts {{ add_class }}">
-      <li>
-        <span>
-          <h4>
-            <a href="{{ post.url }}">
-              {{ post.title }}
-            </a>
-            {{ fresh_tag }}
-            <time class="pull-right">
-              {{ post.date | date_to_string | date: "%b %-d, %Y"  }}
-            </time>
-          </h4>
-        </span>
-      </li>
+    :root {
+      --cream: #F9F7F2;
+      --ink: #1A1916;
+      --muted: #7A7771;
+      --accent: #2E5D4B;
+      --accent-light: #E8F0EC;
+      --border: rgba(26,25,22,0.1);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --max-width: 860px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 max(2rem, calc((100% - var(--max-width)) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── Layout ── */
+    main {
+      padding: 0 max(2rem, calc((100% - var(--max-width)) / 2));
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 6rem 0 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 12px 24px;
+      border-radius: 2px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: var(--accent); }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .project-card {
+      background: var(--cream);
+      padding: 2rem;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .project-card:hover { background: var(--accent-light); }
+
+    .project-num {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .project-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-arrow {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 18px;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .project-card:hover .project-arrow { opacity: 1; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 1px;
+    }
+
+    /* ── About ── */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-left h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 2.2rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .skills-list {
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .skill-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .skill-row span:first-child { font-weight: 500; color: var(--ink); }
+    .skill-row span:last-child { color: var(--muted); }
+
+    .about-right p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-right p:last-child { margin-bottom: 0; }
+
+    /* ── Contact ── */
+    .contact-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .contact-cell {
+      background: var(--cream);
+      padding: 2rem;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .contact-cell:hover { background: var(--accent-light); }
+
+    .c-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .c-value {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > * {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .hero > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero > *:nth-child(2) { animation-delay: 0.15s; }
+    .hero > *:nth-child(3) { animation-delay: 0.25s; }
+    .hero > *:nth-child(4) { animation-delay: 0.35s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .about-layout       { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-block      { grid-template-columns: 1fr; }
+      .nav-links          { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="nav-logo">John Guardado</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    {% assign add_class = '' %}
-    {% assign fresh_tag = '' %}
-  {% endfor %}
-  <ul>
-    <a href="/blog.html">View More...</a>
-  </ul>
-</div>
- -->{% endif %}
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <p class="hero-eyebrow">Software Engineer · Los Angeles</p>
+      <h1>Building things<br>that <em>matter.</em></h1>
+      <p class="hero-sub">
+        I design and develop thoughtful software — from web applications
+        to tools that solve real problems.
+      </p>
+      <a href="#projects" class="btn">View my work ↓</a>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <p class="section-label">Selected work</p>
+      <div class="projects-grid">
+
+        <!-- ✏️ Replace each card with your real projects -->
+        <div class="project-card">
+          <p class="project-num">01</p>
+          <span class="project-arrow">↗</span>
+          <h3>Project Name</h3>
+          <p>A short description of what this project does and the problem it solves.</p>
+          <div class="tag-row">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-num">02</p>
+          <span class="project-arrow">↗</span>
+          <h3>Project Name</h3>
+          <p>A short description of what this project does and the problem it solves.</p>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">API</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-num">03</p>
+          <span class="project-arrow">↗</span>
+          <h3>Project Name</h3>
+          <p>A short description of what this project does and the problem it solves.</p>
+          <div class="tag-row">
+            <span class="tag">JavaScript</span>
+            <span class="tag">CSS</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <p class="section-label">About</p>
+      <div class="about-layout">
+
+        <div class="about-left">
+          <h2>Nice to meet you.</h2>
+          <!-- ✏️ Update skills/tools to match yours -->
+          <div class="skills-list">
+            <div class="skill-row"><span>Frontend</span><span>React, HTML/CSS, JS</span></div>
+            <div class="skill-row"><span>Backend</span><span>Node, Python</span></div>
+            <div class="skill-row"><span>Tools</span><span>Git, GitHub</span></div>
+            <div class="skill-row"><span>Based in</span><span>Los Angeles</span></div>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <!-- ✏️ Replace with your own bio -->
+          <p>
+            I'm John, a software engineer who loves working at the intersection
+            of design and engineering. I care about writing clean, purposeful code
+            and building experiences that feel effortless to use.
+          </p>
+          <p>
+            When I'm not coding, you can find me [add a personal detail here].
+            I'm always open to interesting projects and conversations.
+          </p>
+          <p style="margin-top: 1.5rem">
+            <a href="#contact" class="btn">Get in touch ↓</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <p class="section-label">Contact</p>
+      <div class="contact-block">
+        <!-- ✏️ Replace with your real email and links -->
+        <a href="mailto:you@email.com" class="contact-cell">
+          <span class="c-label">Email</span>
+          <span class="c-value">you@email.com</span>
+        </a>
+        <a href="https://github.com/jguardado39" target="_blank" rel="noopener" class="contact-cell">
+          <span class="c-label">GitHub</span>
+          <span class="c-value">github.com/jguardado39</span>
+        </a>
+        <a href="https://linkedin.com/in/john-guardado-4a673a39/" target="_blank" rel="noopener" class="contact-cell">
+          <span class="c-label">LinkedIn</span>
+          <span class="c-value">linkedin.com/in/john-guardado</span>
+        </a>
+        <!-- ✏️ Point href to your actual resume PDF once uploaded -->
+        <a href="resume.pdf" target="_blank" class="contact-cell">
+          <span class="c-label">Resume</span>
+          <span class="c-value">Download PDF →</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 John Guardado</span>
+      <span>Built from scratch.</span>
+    </footer>
+
+  </main>
+
+</body>
+</html>
